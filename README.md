@@ -31,7 +31,7 @@ another script file.
 The most famous bundler is webpack.
 
 With the necessity of bundlers falling down, other development tools that use the native ecma script modules (ESM)
-are gaining popularity like vitejs and snowpack. 
+are gaining popularity like vitejs and snowpack. `<script type="module" src="..."></script>`
 
 ESM: on demand file serving.
 
