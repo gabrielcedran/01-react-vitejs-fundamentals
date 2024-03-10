@@ -37,6 +37,30 @@ ESM: on demand file serving.
 
 PS: these development tools also make the compiling process automatically (rending babel also redundant).
 
+### React Components
+
+Components is the most basic and important concept in React. Application componentising is a way of 
+creating more reusable and maintainable code as it should result in smaller pieces of code
+that put together deliver the necessary functionalities. Smaller code is easier to read, maintain and test.
+
+
+### Export types
+
+`Default Exports` vs `Named Exports`:
+
+Default exports allow for component (re)naming on import.
+
+Named exports defines the component name on exports and whoever is importing it has to keep the name*. 
+The main advantage of named exports is that components being created from copying another (or being refactored) 
+will render an error in case the component export name does not match with the import's.
+
+
+### Scoped CSS
+
+In react, it's extremely important to ensure css of one component doesn't leak into another. There are many techniques 
+to achieve this and one of them is css modules - which is usually supported out of the box.
+The convention for CSS modules is to use only classes. No ID or tags selectors - tho sometimes it's necessary.
+
 
 # Development
 
