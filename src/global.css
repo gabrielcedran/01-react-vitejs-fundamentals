@@ -12,6 +12,12 @@
     --green-500: #00875f;
 }
 
+:focus {
+    outline: transparent;
+    box-shadow: 0 0 0 2px var(--green-500);
+}
+
+
 // border-box components' width and height include padding and border, unlike content-box
 * {
     margin: 0;
@@ -30,4 +36,8 @@ body, input, textarea, button {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1rem;
+}
+
+textarea {
+    box-sizing: border-box;
 }
