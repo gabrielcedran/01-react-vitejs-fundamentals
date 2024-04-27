@@ -10,6 +10,8 @@
 
     --green-400: #00B37E;
     --green-500: #00875f;
+
+    --red-500: #F75A68;
 }
 
 :focus {
@@ -27,6 +29,7 @@
 
 body {
     background: var(--grey-900);
+    font-family: 'Roboto', sans-serif;
     color: var(--grey-300);
     -webkit-font-smoothing: antialiased;
 }
