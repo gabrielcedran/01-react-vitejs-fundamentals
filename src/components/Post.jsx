@@ -1,27 +1,40 @@
+import {format, formatDistanceToNow} from 'date-fns'
+import enGB from 'date-fns/locale/en-GB'
+
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import styles from './Post.module.css'
 
-export function Post() {
+export function Post({author, post}) {
+
+    const formattedPublisedAt = format(post.publishedAt, "do LLLL yyyy 'at' HH:mm'h'", {locale: enGB}) // date-fns vs Intl.DateTimeFormat
+    const elapseTimeSincePublished = formatDistanceToNow(post.publishedAt, {addSuffix: true, locale: enGB})
+
     return (
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                    <Avatar src="https://github.com/gabrielcedran.png" />
+                    <Avatar src={author.avatarUrl} />
                     <div className={styles.authorInfo}>
-                        <strong>Gabriel Cedran</strong>
-                        <span>Web Developer</span>
+                        <strong>{author.name}</strong>
+                        <span>{author.role}</span>
                     </div>
                 </div>
-                <time title="May 11th, 2022 at 09:30" dateTime="2022-05-11 09:30:11">Published 1 hour ago</time>
+                <time title={formattedPublisedAt} dateTime={post.publishedAt.toISOString()}>
+                    {elapseTimeSincePublished}
+                </time>
             </header>
             
             <div className={styles.content}>
-                <p>Hey buddies</p>
-                <p>How are you feeling in this grey weekend?</p>
-                <p>All the best</p>
-                <p><a href="#">https://github.com/gabrielcedran</a></p>
-                <p><a href="#">#test</a>{' '}<a href="#">#software</a></p>
+                {post.content.map((content) => {
+                    if (content.type === 'paragraph') {
+                        return <p>{content.content}</p>
+                    }    
+                    if (content.type === 'link') {
+                        return <p><a href="#">{content.content}</a></p>
+                    }
+                    return ""
+                })}
             </div>
 
             <form className={styles.commentForm}>

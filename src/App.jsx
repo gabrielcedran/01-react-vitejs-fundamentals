@@ -6,6 +6,43 @@ import './global.css';
 
 import styles from './App.module.css';
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/gabrielcedran.png',
+      name: 'Gabriel Cedran',
+      role: 'Software Engineer'
+    },
+    post: {
+      publishedAt: new Date('2024-03-12 20:00:00Z'),
+      content: [ // ideally it'd be markdown. But for simplicity, this structure is used
+        { type: 'paragraph', content: 'Hello' },
+        { type: 'paragraph', content: 'This is a new post' },
+        { type: 'paragraph', content: 'thanks for reading' },
+        { type: 'link', content: 'https://github.com/gabrielcedran' },
+      ]
+    }
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/gabrielcedran.png',
+      name: 'Don Bob',
+      role: 'CTO'
+    },
+    post: {
+      publishedAt: new Date('2024-04-12 19:00:00Z'),
+      content: [ // ideally it'd be markdown. But for simplicity, this structure is used
+        { type: 'paragraph', content: 'Hello' },
+        { type: 'paragraph', content: 'Are you expert in css?' },
+        { type: 'paragraph', content: 'Contact me.' },
+        { type: 'link', content: 'https://github.com/gabrielcedran' },
+      ]
+    }
+  },
+]
+
 export function App() {
   return (
     <div>
@@ -14,14 +51,14 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main> 
-          <Post 
-            author="Don" 
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda molestias ad dolorum optio! Facere doloribus itaque beatae maiores, hic fugiat repellendus eveniet sed aperiam. Voluptate sit doloribus nemo sunt explicabo!"
-          />
-          <Post 
-            author="Bob" 
-            content="Another beautiful post!"
-          />
+        {
+          posts.map(({author, post}) => (
+            <Post 
+              author={author}
+              post={post}
+            />
+          ))
+        }
         </main>
       </div>
 
